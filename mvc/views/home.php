@@ -28,60 +28,21 @@
       <i class="fa fa-chevron-right next"></i>
       <i class="fa fa-chevron-left prev"></i>
       <div class="posts-wrapper">
-        <?php foreach ($data['Posts'] as $key => $post) : ?>
+        <?php foreach ($data['Posts'] as $key => $posts) : ?>
           <div class="post">
             <div class="inner-post">
-              <img src="<?php echo $post['image']; ?>" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+              <img src="<?php echo $posts['image']; ?>" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
               <div class="post-info">
-                <h4><a href="single.php"><?php echo $post['title']; ?></a></h3>
+                <h4><a href="single.php"><?php echo $posts['title']; ?></a></h3>
                   <div>
-                    <i class="fa fa-user-o"></i> <?php echo $post['author']; ?>
+                    <i class="fa fa-user-o"></i> <?php echo $posts['user_id']; ?>
                     &nbsp;
-                    <i class="fa fa-calendar"></i> <?php echo $post['created_time']; ?>
+                    <i class="fa fa-calendar"></i> <?php echo $posts['created_at']; ?>
                   </div>
               </div>
             </div>
           </div>
         <?php endforeach; ?>
-        <!-- <div class="post">
-          <div class="inner-post">
-            <img src="public/images/image_6.png" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-            <div class="post-info">
-              <h4><a href="single.php">One day your life will flash before your eyes</a></h3>
-                <div>
-                  <i class="fa fa-user-o"></i> duchdtran
-                  &nbsp;
-                  <i class="fa fa-calendar"></i> Dec 10, 2020
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="post">
-          <div class="inner-post">
-            <img src="public/images/image_5.png" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-            <div class="post-info">
-              <h4><a href="single.php">One day your life will flash before your eyes</a></h3>
-                <div>
-                  <i class="fa fa-user-o"></i> duchdtran
-                  &nbsp;
-                  <i class="fa fa-calendar"></i> Dec 10, 2020
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="post">
-          <div class="inner-post">
-            <img src="public/images/image_4.png" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-            <div class="post-info">
-              <h4><a href="single.php">One day your life will flash before your eyes</a></h4>
-              <div>
-                <i class="fa fa-user-o"></i> duchdtran
-                &nbsp;
-                <i class="fa fa-calendar"></i> Dec 10, 2020
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
     <!-- // Posts Slider -->
@@ -90,17 +51,17 @@
       <div class="page-content">
         <h1 class="recent-posts-title">Bài viết mới nhất</h1>
 
-        <?php foreach ($data['Posts'] as $key => $post) : ?>
+        <?php foreach ($data['Posts'] as $key => $posts) : ?>
           <div class="post clearfix">
-            <img src="<?php echo $post['image']; ?>" class="post-image" alt="">
+            <img src="<?php echo $posts['image']; ?>" class="post-image" alt="">
             <div class="post-content">
-              <h2 class="post-title"><a href="#"><?php echo $post['title'] ?></a></h2>
+              <h2 class="post-title"><a href="#"><?php echo $posts['title'] ?></a></h2>
               <div class="post-info">
-                <i class="fa fa-user-o"></i> <?php echo $post['author'] ?>
+                <i class="fa fa-user-o"></i> <?php echo $posts['user_id'] ?>
                 &nbsp;
-                <i class="fa fa-calendar"></i> <?php echo $post['created_time'] ?>
+                <i class="fa fa-calendar"></i> <?php echo $posts['created_at'] ?>
               </div>
-              <p class="post-body"><?php echo $post['body'] ?>
+              <p class="post-body"><?php echo $posts['body'] ?>
               </p>
               <a href="#" class="read-more">Đọc thêm</a>
             </div>
@@ -119,9 +80,9 @@
         <div class="section topics">
           <h2>Chủ đề</h2>
           <ul>
-            <?php foreach ($data['Topics'] as $key => $topic) : ?>
+            <?php foreach ($data['Topics'] as $key => $topics) : ?>
               <a href="#">
-                <li><?php echo $topic; ?></li>
+                <li><?php echo $topics['name']; ?></li>
               </a>
             <?php endforeach; ?>
           </ul>

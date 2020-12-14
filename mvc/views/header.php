@@ -8,7 +8,7 @@
   <div class="fa fa-reorder menu-toggle"></div>
   <nav>
     <ul>
-      <li><a href="<?php echo BASE_URL . '/index.php' ?>">Trang chủ</a></li>
+      <li><a href="<?php echo BASE_URL . '/home.php' ?>">Trang chủ</a></li>
       <li><a href="#">Giới thiệu</a></li>
       <li><a href="#">Liên hệ</a></li>
 

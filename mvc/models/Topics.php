@@ -1,10 +1,12 @@
 <?php
 class Topics extends DB
 {
+    protected $table = "topics";
+
     public function GetAllTopics()
     {
-        $topics = ['Android', 'Flutter', 'PHP', 'IOS'];
-
+        
+        $topics = $this->selectAll($this->table);
         return $topics;
     }
 }
