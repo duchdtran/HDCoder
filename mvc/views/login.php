@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
@@ -21,24 +22,24 @@
 
 
   <div class="auth-content">
-    <form action="login.php" method="post">
+    <form action="login" method="post">
       <h3 class="form-title">Login</h3>
-      
-      <!-- <?php include("app/helper/formErrors.php") ?> -->
+
+      <?php include("formErrors.php") ?>
 
 
       <div>
         <label>Username</label>
-        <input type="text" name="username" value="" class="text-input">
+        <input type="text" name="username" value="<?php echo $data["username"]; ?>" class="text-input">
       </div>
       <div>
         <label>Password</label>
-        <input type="password" name="password" value="" class="text-input">
+        <input type="password" name="password" value="<?php echo $data["password"]; ?>" class="text-input">
       </div>
       <div>
         <button type="submit" name="login-btn" class="btn">Login</button>
       </div>
-      <p class="auth-nav">Or <a href="auth/register">Sign Up</a></p>
+      <p class="auth-nav">Or <a href="register">Sign Up</a></p>
     </form>
   </div>
 

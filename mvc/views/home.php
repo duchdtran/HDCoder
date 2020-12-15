@@ -1,6 +1,3 @@
-<!-- <?php include("path.php") ?> -->
-<!-- <?php include(ROOT . DS . "app" . DS . "controller" . DS . "topics.php"); ?> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +32,7 @@
               <div class="post-info">
                 <h4><a href="single.php"><?php echo $posts['title']; ?></a></h3>
                   <div>
-                    <i class="fa fa-user-o"></i> <?php echo $posts['user_id']; ?>
+                    <i class="fa fa-user-o"></i> <?php echo $posts['author']; ?>
                     &nbsp;
                     <i class="fa fa-calendar"></i> <?php echo $posts['created_at']; ?>
                   </div>
@@ -57,7 +54,7 @@
             <div class="post-content">
               <h2 class="post-title"><a href="#"><?php echo $posts['title'] ?></a></h2>
               <div class="post-info">
-                <i class="fa fa-user-o"></i> <?php echo $posts['user_id'] ?>
+                <i class="fa fa-user-o"></i> <?php echo $posts['author'] ?>
                 &nbsp;
                 <i class="fa fa-calendar"></i> <?php echo $posts['created_at'] ?>
               </div>

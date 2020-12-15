@@ -86,7 +86,6 @@ class DB
             }
             $i++;
         }
-
         $stmt = $this->executeQuery($sql, $data);
         $id = $stmt->insert_id;
         return $id;
