@@ -15,7 +15,7 @@
 <body>
 
   <?php include("header.php"); ?>
-  <!-- <?php include(ROOT . DS . "app" . DS . "includes" . DS . "message.php"); ?> -->
+  <?php include("message.php"); ?>
 
   <!-- Page wrapper -->
   <div class="page-wrapper">
@@ -30,14 +30,14 @@
             <div class="inner-post">
               <img src="<?php echo $posts['image']; ?>" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
               <div class="post-info">
-                <h4><a href="single.php"><?php echo $posts['title']; ?></a></h3>
+                <h4><a href="post/init/<?php echo $posts['id']; ?>"><?php echo $posts['title']; ?></a></h3>
                   <div>
                     <i class="fa fa-user-o"></i> <?php echo $posts['author']; ?>
                     &nbsp;
                     <i class="fa fa-calendar"></i> <?php echo $posts['created_at']; ?>
                   </div>
               </div>
-            </div>
+            </div> 
           </div>
         <?php endforeach; ?>
       </div>
@@ -52,15 +52,15 @@
           <div class="post clearfix">
             <img src="<?php echo $posts['image']; ?>" class="post-image" alt="">
             <div class="post-content">
-              <h2 class="post-title"><a href="#"><?php echo $posts['title'] ?></a></h2>
+              <h2 class="post-title"><a href="post/init/<?php echo $posts['id']; ?>"><?php echo $posts['title'] ?></a></h2>
               <div class="post-info">
                 <i class="fa fa-user-o"></i> <?php echo $posts['author'] ?>
                 &nbsp;
                 <i class="fa fa-calendar"></i> <?php echo $posts['created_at'] ?>
               </div>
-              <p class="post-body"><?php echo $posts['body'] ?>
+              <p class="post-body"><?php echo strip_tags(substr($posts['body'], 0, 500) . '...', ENT_NOQUOTES);  ?>
               </p>
-              <a href="#" class="read-more">Đọc thêm</a>
+              <a href="post/init/<?php echo $posts['id']; ?>" class="read-more">Đọc thêm</a>
             </div>
           </div>
         <?php endforeach; ?>
@@ -68,7 +68,7 @@
       <div class="sidebar">
         <!-- Search -->
         <div class="search-div">
-          <form action="index.php" method="post">
+          <form action="home" method="post">
             <input type="text" name="search-term" class="text-input" placeholder="Tìm kiếm...">
           </form>
         </div>

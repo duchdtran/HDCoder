@@ -8,10 +8,11 @@ class DB
     protected $password = "";
     protected $dbname = "hdcoder";
 
-    function __construct(){
+    function __construct()
+    {
         $this->con = new MySQLi($this->servername, $this->username, $this->password, $this->dbname);
 
-        if($this->con->connect_error){
+        if ($this->con->connect_error) {
             die('Database connection error: ' . $this->con->connect_error);
         }
     }
@@ -26,7 +27,15 @@ class DB
         return $stmt;
     }
 
-    public function selectAll($table, $conditions = [])
+    function query($sql)
+    {
+        $stmt = $this->con->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $records;
+    }
+
+    function selectAll($table, $conditions = [])
     {
         $sql = "SELECT * FROM $table";
 
@@ -45,14 +54,13 @@ class DB
                 }
                 $i++;
             }
-
             $stmt = $this->executeQuery($sql, $conditions);
             $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             return $records;
         }
     }
 
-    public function selectOne($table, $conditions)
+    function selectOne($table, $conditions)
     {
         $sql = "SELECT * FROM $table";
 
@@ -73,7 +81,7 @@ class DB
         return $records;
     }
 
-    public function create($table, $data)
+    function create($table, $data)
     {
         $sql = "INSERT INTO $table SET ";
 
@@ -92,7 +100,7 @@ class DB
     }
 
 
-    public function update($table, $id, $data)
+    function update($table, $id, $data)
     {
         $sql = "UPDATE $table SET ";
 
@@ -112,7 +120,7 @@ class DB
         return $stmt->affected_rows;
     }
 
-    public function delete($table, $id)
+    function delete($table, $id)
     {
         $sql = "DELETE FROM $table WHERE id=?";
 
