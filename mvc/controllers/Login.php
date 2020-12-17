@@ -17,7 +17,7 @@ class Login extends Controller
         $_SESSION['type'] = 'success';
 
         if ($_SESSION['admin']) {
-            header('location: ' . BASE_URL . '/admin/dashboard.php');
+            header('location: ' . BASE_URL_ADMIN .'/posts/index.php');
         } else {
             header('location: ' . BASE_URL . '/home');
         }
