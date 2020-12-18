@@ -6,6 +6,7 @@ class Topics extends DB
     public function GetAllTopics()
     {
         $topics = $this->selectAll($this->table);
+
         return $topics;
     }
 }

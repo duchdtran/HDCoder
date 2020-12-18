@@ -1,6 +1,6 @@
 <?php
 
-class Posts extends Controller
+class Post extends Controller
 {
 
     // Must have Init()

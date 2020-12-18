@@ -19,7 +19,7 @@ class Register extends Controller
         $_SESSION['type'] = 'success';
 
         if ($_SESSION['admin']) {
-            header('location: ' . BASE_URL . '/admin/dashboard.php');
+            header('location: ' . BASE_URL_ADMIN . '/post');
         } else {
             header('location: ' . BASE_URL . '/home');
         }
@@ -30,8 +30,6 @@ class Register extends Controller
     // Must have Init()
     function Init()
     {
-        $this->view("register", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password, "email" => $this->email, "passwordConf" => $this->passwordConf]);
-
         if (isset($_POST['register-btn'])) {
             $userModel = $this->model("Users");
 
@@ -46,12 +44,13 @@ class Register extends Controller
 
                 $this->loginUser($user);
             } else {
-                echo "Register fail";
                 $this->username = $_POST['username'];
                 $this->email = $_POST['email'];
                 $this->password = $_POST['password'];
                 $this->passwordConf = $_POST['passwordConf'];
             }
-        }   
+        }  
+
+        $this->view("register", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password, "email" => $this->email, "passwordConf" => $this->passwordConf]);
     } 
 }

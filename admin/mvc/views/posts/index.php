@@ -12,7 +12,7 @@
   <!-- Custom Styles -->
   <!-- <link rel="stylesheet" href=<?php echo ROOT . DS . "public" . DS . "css" . DS . "style.css" ?>> -->
 
-  <!-- Admin Styling --> -->
+  <!-- Admin Styling -->
   <!-- <link rel="stylesheet" href="../../public/css/admin.css"> -->
 
   <style>
@@ -840,14 +840,15 @@
   <?php include(ROOT . DS . "mvc" . DS . "views" . DS . "adminHeader.php"); ?>
 
   <div class="admin-wrapper clearfix">
+
     <?php include(ROOT . DS . "mvc" . DS . "views" . DS . "adminSidebar.php"); ?>
 
 
     <!-- Admin Content -->
     <div class="admin-content clearfix">
       <div class="button-group">
-        <a href="create.php" class="btn btn-sm">Add Post</a>
-        <a href="index.php" class="btn btn-sm">Manage Posts</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Add Post</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Manage Posts</a>
       </div>
       <div class="">
         <h2 style="text-align: center;">Manage Posts</h2>
@@ -866,9 +867,9 @@
               <tr class="rec">
                 <td><?php echo $post['id']; ?></td>
                 <td><?php echo $post['title']; ?></td>
-                <td><?php echo $post['user_id']; ?></td>
-                <td><a href="edit.php" class="edit">Sửa</a></td>
-                <td> <a href="#" class="delete"> Xóa</a></td>
+                <td><?php echo $post['author']; ?></td>
+                <td><a href="<?php echo BASE_URL_ADMIN . "/post/edit";?>" class="edit">Sửa</a></td>
+                <td> <a href="<?php echo BASE_URL_ADMIN . "/post/delete";?>" class="delete"> Xóa</a></td>
                 <?php if ($post['published']) : ?>
                   <td><a href="#" class="unpublish">Không công khai</a>
                   <?php else : ?>

@@ -17,7 +17,7 @@ class Login extends Controller
         $_SESSION['type'] = 'success';
 
         if ($_SESSION['admin']) {
-            header('location: ' . BASE_URL_ADMIN .'/posts/index.php');
+            header('location: ' . BASE_URL_ADMIN .'/post');
         } else {
             header('location: ' . BASE_URL . '/home');
         }
@@ -29,9 +29,6 @@ class Login extends Controller
 
     function Init()
     {
-        $this->view("login", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password]);
-
-
         if (isset($_POST["login-btn"])) {
             $userModel = $this->model("Users");
             $this->errors = $userModel->ValidateLogin($_POST);
@@ -43,10 +40,11 @@ class Login extends Controller
             if (isset($user)) {
                 $this->loginUser($user);
             } else {
-                echo "Login Fail";
                 $this->username = $_POST['username'];
                 $this->password = $_POST['password'];
             }
         }
+
+        $this->view("login", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password]); 
     }
 }

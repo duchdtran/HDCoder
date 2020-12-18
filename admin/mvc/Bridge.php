@@ -2,7 +2,7 @@
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(__FILE__)));
 define('BASE_URL', 'http://localhost/hdcoder');
-define('BASE_URL_ADMIN', 'http://localhost/demo/admin');
+define('BASE_URL_ADMIN', 'http://localhost/hdcoder/admin');
 
 function dd($value)
 {
@@ -17,5 +17,5 @@ require_once "./mvc/core/App.php";
 require_once "./mvc/core/Controller.php";
 
 // Connect Database
-require_once "././mvc/core/DB.php";
+require_once "./mvc/core/DB.php";
 ?>
