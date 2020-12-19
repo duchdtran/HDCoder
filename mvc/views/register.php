@@ -5,14 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
   <!-- Custom CSS -->
   <link rel="stylesheet" href="public/css/style.css">
 
-  <title>Register</title>
+  <title>Đăng kí</title>
 </head>
 
 <body>
@@ -22,12 +18,12 @@
 
   <div class="auth-content">
     <form action="register" method="post">
-      <h3 class="form-title">Register</h3>
+      <h3 class="form-title">Đăng kí</h3>
 
       <?php include("formErrors.php"); ?>
 
       <div>
-        <label>Username</label>
+        <label>Tên người dùng</label>
         <input type="text" name="username" value="<?php echo $data["username"]; ?>" class="text-input">
       </div>
       <div>
@@ -35,24 +31,19 @@
         <input type="email" name="email" value="<?php echo $data["email"]; ?>" class="text-input">
       </div>
       <div>
-        <label>Password</label>
+        <label>Mật khẩu</label>
         <input type="password" name="password" value="<?php echo $data["password"]; ?>" class="text-input">
       </div>
       <div>
-        <label>Confirm Password</label>
+        <label>Xác nhận mật khẩu</label>
         <input type="password" name="passwordConf" value="<?php echo $data["passwordConf"]; ?>" class="text-input">
       </div>
       <div>
-        <button type="submit" name="register-btn" class="btn">Register</button>
+        <button type="submit" name="register-btn" class="btn">Đăng kí</button>
       </div>
-      <p class="auth-nav">Or <a href="login">Sign In</a></p>
+      <p class="auth-nav">Hoặc <a href="login">Đăng nhập</a></p>
     </form>
   </div>
-
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <script src="public/js/scripts.js"></script>
 
 </body>
 

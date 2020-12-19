@@ -11,8 +11,31 @@ class Posts extends DB
         return $posts;    
     }
 
+    public function CreatePost($post){
+        $post_id = $this->create($this->table, $post);
+        return $post_id;
+    }
+
     public function GetPostById($post_id){
         $post = $this->selectOne($this->table, ['id' => $post_id]);
         return $post;
+    }
+
+    public function ValidatePost($post, $checkExistingUser = false){
+        $errors = array();
+        if (empty($post['title'])) {
+            array_push($errors, 'Tiêu đề không được bỏ trống');
+        }
+    
+        if (empty($post['body'])) {
+            array_push($errors, 'Nội dung không được bỏ trống');
+        }
+
+        $existingUser = $this->selectOne($this->table, ['title' => $post['title']]);
+        if($existingUser && $checkExistingUser){
+            array_push($errors, 'Tiêu đề đã tồn tại');
+        }
+
+        return $errors;
     }
 }

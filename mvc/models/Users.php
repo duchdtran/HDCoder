@@ -28,24 +28,24 @@ class Users extends DB
     public function ValidateUser($user){
         $errors = array();
         if (empty($user['username'])) {
-            array_push($errors, 'Username is required');
+            array_push($errors, 'Tên người dùng không được để trống');
         }
     
         if (empty($user['email'])) {
-            array_push($errors, 'Email is required');
+            array_push($errors, 'Email không được để trống');
         }
     
         if (empty($user['password'])) {
-            array_push($errors, 'Password is required');
+            array_push($errors, 'Mật khẩu không được để trống');
         }
     
         if ($user['password'] !== $user['passwordConf']) {
-            array_push($errors, 'Password do not match');
+            array_push($errors, 'Mật khẩu không khớp');
         }
 
         $existingUser = $this->selectOne('users', ['email' => $user['email']]);
         if($existingUser){
-            array_push($errors, 'Email already exists');
+            array_push($errors, 'Email đã tồn tại');
         }
 
         return $errors;
@@ -54,10 +54,10 @@ class Users extends DB
     public function ValidateLogin($user){
         $errors = array();
         if (empty($user['username'])) {
-            array_push($errors, 'Username is required');
+            array_push($errors, 'Tên người dùng không được để trống');
         }
         if (empty($user['password'])) {
-            array_push($errors, 'Password is required');
+            array_push($errors, 'Mật khẩu không được để trống');
         }
 
         return $errors;

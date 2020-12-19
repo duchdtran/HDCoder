@@ -2,6 +2,7 @@
 
 class Topic extends Controller
 {
+    private $errors = array();
     private $name = "";
     private $description = "";
 
@@ -17,12 +18,12 @@ class Topic extends Controller
     {
         if(isset($_POST['save-topic'])){
             $topicModel = $this->model("Topics");
-            $this->errors = $topicModel->ValidateTopic($_POST);
+            $this->errors = $topicModel->ValidateTopic($_POST, true);
         
             if (count($this->errors) === 0) {
                 unset($_POST['save-topic']);
                 $topicModel->CreateTopic($_POST);
-                $_SESSION['message'] = 'Topic created successfully';
+                $_SESSION['message'] = 'Chủ đề đã được tạo thành công';
                 $_SESSION['type'] = 'success';
                 header('location: ' . BASE_URL_ADMIN . '/topic');
                 exit();
@@ -32,7 +33,7 @@ class Topic extends Controller
             }
         }
 
-        $this->view("topics/create", ["name" => $this->name, "description" => $this->description]);
+        $this->view("topics/create", ["errors" => $this->errors, "name" => $this->name, "description" => $this->description]);
     }
 
     function Edit($topic_id)
@@ -41,15 +42,38 @@ class Topic extends Controller
 
         $topic = $topicModel->GetTopicByID($topic_id);
 
-        $this->view("topics/edit", ["topic" => $topic]);
+        if (isset($_POST['update-topic'])) {
+            $this->errors = $topicModel->validateTopic($_POST);
+        
+
+            dd($this->errors);
+            if (count($this->errors) === 0) {
+                $id = $_POST['id'];
+                unset($_POST['update-topic'], $_POST['id']);
+                $topicModel->UpdateTopicByID($id, $_POST);
+                $_SESSION['message'] = 'Chủ đề đã được sửa thành công';
+                $_SESSION['type'] = 'success';
+                header('location: ' . BASE_URL_ADMIN . '/topic/index');
+                exit();
+            } else {
+                $this->id = $_POST['id'];
+                $this->name = $_POST['name'];
+                $this->description = $_POST['description'];
+            }
+           
+        }
+
+        $this->view("topics/edit", ["errors" => $this->errors, "topic" => $topic]);
 
     }
 
     function Delete($topic_id)
     {
-        dd($_POST);
         $topicModel = $this->model("Topics");
 
         $topicModel->DeleteTopic($topic_id);
+        $_SESSION['message'] = 'Chủ đề đã được xóa thành công';
+        $_SESSION['type'] = 'success';
+        header('location: ' . BASE_URL . '/admin/topics/index.php');
     }
 }

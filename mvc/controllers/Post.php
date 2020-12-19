@@ -6,7 +6,7 @@
         $postModel = $this->model("Posts");
 
         $this->view("post", ["post" => $postModel->GetPostById($post_id), 
-        "popular" => $postModel->GetAllPosts(),
+        "popular" => $postModel->GetPostPage(1),
         "topics" => $topicModel->GetAllTopics()]);
     }
  }

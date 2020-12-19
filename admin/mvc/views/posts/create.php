@@ -6,13 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <!-- Custom Styles -->
   <!-- <link rel="stylesheet" href=<?php echo ROOT . DS . "public" . DS . "css" . DS . "style.css" ?>> -->
 
-  <!-- Admin Styling -->
   <!-- <link rel="stylesheet" href="../../public/css/admin.css"> -->
 
   <style>
@@ -832,7 +829,7 @@
     }
   </style>
 
-  <title>Admin - Create Post</title>
+  <title>Admin - Tạo bài đăng</title>
 </head>
 
 <body>
@@ -845,29 +842,28 @@
     <!-- Admin Content -->
     <div class="admin-content clearfix">
       <div class="button-group">
-        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Add Post</a>
-        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Manage Posts</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Thêm bài đăng</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Quản lí bài đăng</a>
       </div>
       <div class="">
-        <h2 style="text-align: center;">Create Post</h2>
+        <h2 style="text-align: center;">Tạo bài đăng</h2>
 
         <!-- <?php include(ROOT . DS . "app" . DS . "helper" . DS . "formErrors.php"); ?> -->
 
-        <form action="<?php echo BASE_URL_ADMIN . "/post/create";?>" method="post">
+        <form action="create" method="post">
           <div class="input-group">
-            <label>Title</label>
-            <input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
+            <label>Tiêu đề</label>
+            <input type="text" name="title" value="<?php echo $data['title']; ?>" class="text-input">
           </div>
           <div class="input-group">
-            <label>Body</label>
-            <textarea class="text-input" name="body" id="body"><?php echo $body; ?></textarea>
+            <label>Nội dung</label>
+            <textarea class="text-input" name="body" id="body"><?php echo $data['body']; ?></textarea>
           </div>
           <div class="input-group">
-            <label>Topic</label>
+            <label>Chủ đề</label>
             <select class="text-input" name="topic_id">
-              <option name=""></option>
-              <?php foreach ($topics as $key => $topic) : ?>
-                <?php if (!empty($topic_id) && $topic_id == $topic['id']) : ?>
+              <?php foreach ($data['topics'] as $key => $topic) : ?>
+                <?php if (!empty($topic_id) && $data['topic_id'] == $topic['id']) : ?>
                   <option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
                 <?php else : ?>
                   <option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
@@ -883,25 +879,13 @@
             </label>
           </div>
           <div class="input-group">
-            <button type="submit" name="save-post" class="btn">Save Post</button>
+            <button type="submit" name="save-post" class="btn">Lưu bài viết</button>
           </div>
         </form>
 
       </div>
     </div>
-    <!-- // Admin Content -->
-
   </div>
-
-
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- CKEditor 5 -->
-  <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-
-  <!-- Custome Scripts -->
-  <!-- <script src="../../scripts.js"></script> -->
 
 </body>
 

@@ -834,7 +834,7 @@
     }
   </style>
 
-  <title>Admin - Edit Post</title>
+  <title>Admin - Sửa bài viết</title>
 </head>
 
 <body>
@@ -848,11 +848,11 @@
     <!-- Admin Content -->
     <div class="admin-content clearfix">
       <div class="button-group">
-        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Add Post</a>
-        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Manage Posts</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Thêm bài viết</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Quản lí bài viết</a>
       </div>
       <div class="">
-        <h2 style="text-align: center;">Edit Post</h2>
+        <h2 style="text-align: center;">Sửa bài viết</h2>
 
         <form action="<?php echo BASE_URL_ADMIN . "/post/create";?>" method="post">
           <div class="input-group">
@@ -874,11 +874,11 @@
           </div>
           <div class="input-group">
             <label>
-              <input type="checkbox" name="publish" /> Publish
+              <input type="checkbox" name="publish" /> Công khai
             </label>
           </div>
           <div class="input-group">
-            <button type="submit" name="update-post" class="btn">Update Post</button>
+            <button type="submit" name="update-post" class="btn">Cập nhật bài viết</button>
           </div>
         </form>
 

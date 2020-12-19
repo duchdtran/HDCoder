@@ -847,13 +847,13 @@
     <!-- Admin Content -->
     <div class="admin-content clearfix">
       <div class="button-group">
-        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Add Post</a>
-        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Manage Posts</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post/create";?>" class="btn btn-sm">Thêm bài viết</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/post";?>" class="btn btn-sm">Quản lí bài viết</a>
       </div>
       <div class="">
-        <h2 style="text-align: center;">Manage Posts</h2>
+        <h2 style="text-align: center;">Quản lí bài viết</h2>
 
-        <!-- <?php include(ROOT . DS . "app" . DS . "includes" . DS . "message.php"); ?> -->
+        <?php include(ROOT . DS . "mvc" . DS . "views" . DS . "message.php"); ?>
 
         <table>
           <thead>
@@ -865,7 +865,7 @@
           <tbody>
             <?php foreach ($data['posts'] as $key => $post) : ?>
               <tr class="rec">
-                <td><?php echo $post['id']; ?></td>
+                <td><?php echo $key + 1; ?></td>
                 <td><?php echo $post['title']; ?></td>
                 <td><?php echo $post['author']; ?></td>
                 <td><a href="<?php echo BASE_URL_ADMIN . "/post/edit";?>" class="edit">Sửa</a></td>

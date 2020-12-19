@@ -13,7 +13,7 @@ class Login extends Controller
         $_SESSION['id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['admin'] = $user['admin'];
-        $_SESSION['message'] = 'You are now logged in';
+        $_SESSION['message'] = 'Bạn đã đăng nhập';
         $_SESSION['type'] = 'success';
 
         if ($_SESSION['admin']) {

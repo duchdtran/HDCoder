@@ -1,5 +1,3 @@
-<?php include("../../path.php") ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +12,7 @@
   <!-- Custom Styles -->
   <!-- <link rel="stylesheet" href=<?php echo ROOT . DS . "public" . DS . "css" . DS . "style.css" ?>> -->
 
-  <!-- Admin Styling --> -->
+  <!-- Admin Styling -->
   <!-- <link rel="stylesheet" href="../../public/css/admin.css"> -->
 
   <style>
@@ -834,7 +832,7 @@
     }
   </style>
 
-  <title>Admin - Create Admin User</title>
+  <title>Admin - Thêm user</title>
 </head>
 
 <body>
@@ -849,18 +847,18 @@
     <!-- Admin Content -->
     <div class="admin-content clearfix">
       <div class="button-group">
-        <a href="create.php" class="btn btn-sm">Add User</a>
-        <a href="index.php" class="btn btn-sm">Manage Users</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/user/create";?>" class="btn btn-sm">Thêm User</a>
+        <a href="<?php echo BASE_URL_ADMIN . "/user";?>" class="btn btn-sm">Quản lí Users</a>
       </div>
       <div class="">
-        <h2 style="text-align: center;">Create User</h2>
+        <h2 style="text-align: center;">Tạo User</h2>
 
-        <form action="create.php" method="post">
+        <form action="create" method="post">
           <!-- <div class="msg error">
             <li>Username required</li>
           </div> -->
           <div class="input-group">
-            <label>Username</label>
+            <label>Tên tài khoản</label>
             <input type="text" name="username" class="text-input">
           </div>
           <div class="input-group">
@@ -868,22 +866,22 @@
             <input type="email" name="email" class="text-input">
           </div>
           <div class="input-group">
-            <label>Password</label>
+            <label>Mật khẩu</label>
             <input type="password" name="password" class="text-input">
           </div>
           <div class="input-group">
-            <label>Confirm Password</label>
+            <label>Xác nhận mật khẩu</label>
             <input type="password" name="passwordConf" class="text-input">
           </div>
           <div class="input-group">
-            <label>Role</label>
-            <select class="text-input" name="role">
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
+            <label>Quyền</label>
+            <select class="text-input" name="admin">
+              <option value="0">User</option>
+              <option value="1">Admin</option>
             </select>
           </div>
           <div class="input-group">
-            <button type="submit" name="save-user" class="btn">Save User</button>
+            <button type="submit" name="save-user" class="btn">Lưu mật khẩu</button>
           </div>
         </form>
 

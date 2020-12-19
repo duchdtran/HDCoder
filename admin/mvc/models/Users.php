@@ -3,6 +3,12 @@ class Users extends DB
 {
     private $table = "users";
 
+    public function GetAllTopics()
+    {
+        $user = $this->selectAll($this->table);
+        return $user;
+    }
+
     public function Register($users){
         $user_id = $this->create($this->table, $users);
         $user = $this->selectOne($this->table, ['id' => $user_id]);
