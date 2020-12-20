@@ -10,6 +10,10 @@ function dd($value)
     die();
 }
 
+if ($_SESSION['admin'] != 1) {
+    header('location: ' . BASE_URL . '/login');
+}
+
 // Process URL from browser
 require_once "./mvc/core/App.php";
 
@@ -18,4 +22,3 @@ require_once "./mvc/core/Controller.php";
 
 // Connect Database
 require_once "./mvc/core/DB.php";
-?>

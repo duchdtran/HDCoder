@@ -21,6 +21,15 @@ class Posts extends DB
         return $post;
     }
 
+    public function UpdatePostByID($post_id, $post){
+        return $this->update($this->table, $post_id, $post);
+    }
+
+    public function DeletePost($post_id)
+    {
+        $this->delete($this->table, $post_id);
+    }
+
     public function ValidatePost($post, $checkExistingUser = false){
         $errors = array();
         if (empty($post['title'])) {

@@ -26,12 +26,22 @@ class Users extends DB
         return $result;
     }
 
+    
+    public function UpdateUserByID($user_id, $user){
+        return $this->update($this->table, $user_id, $user);
+    }
+
+    public function DeleteUser($user_id)
+    {
+        $this->delete($this->table, $user_id);
+    }
+
     public function GetUserByID($user_id){
         $user = $this->selectOne($this->table, ["id" => $user_id]);
         return $user;
     }
 
-    public function ValidateUser($user){
+    public function ValidateUser($user, $checkExistingUser = false){
         $errors = array();
         if (empty($user['username'])) {
             array_push($errors, 'Username is required');
@@ -50,7 +60,7 @@ class Users extends DB
         }
 
         $existingUser = $this->selectOne('users', ['email' => $user['email']]);
-        if($existingUser){
+        if($existingUser && $checkExistingUser){
             array_push($errors, 'Email already exists');
         }
 

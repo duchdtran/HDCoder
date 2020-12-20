@@ -20,8 +20,7 @@ class Topics extends DB
     }
 
     public function UpdateTopicByID($topic_id, $topic){
-        $topic_id = $this->update('topics', $topic_id, $topic);
-        return $topic_id;
+        return $this->update($this->table, $topic_id, $topic);
     }
 
     public function DeleteTopic($topic_id)

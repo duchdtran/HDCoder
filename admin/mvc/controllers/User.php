@@ -21,7 +21,7 @@ class User extends Controller
         if (isset($_POST['save-user'])) {
             $userModel = $this->model("Users");
 
-            $this->errors = $userModel->validateUser($_POST);
+            $this->errors = $userModel->validateUser($_POST, true);
 
             if (count(($this->errors)) === 0) {
                 unset($_POST['save-user'], $_POST['passwordConf']);
@@ -57,10 +57,8 @@ class User extends Controller
         $this->passwordConf = $user['password'];
 
         if (isset($_POST['update-user'])) {
-            $this->errors = $userModel->validateTopic($_POST);
+            $this->errors = $userModel->validateUser($_POST, false);
 
-
-            dd($this->errors);
             if (count($this->errors) === 0) {
                 $id = $_POST['id'];
                 unset($_POST['update-user'], $_POST['id']);
@@ -80,14 +78,13 @@ class User extends Controller
         $this->view("users/edit", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password, "email" => $this->email, "passwordConf" => $this->passwordConf]);
     }
 
-    function Delete($topic_id)
+    function Delete($user_id)
     {
-        dd($_POST);
-        $userModel = $this->model("Topics");
+        $userModel = $this->model("Users");
 
-        $userModel->DeleteTopic($topic_id);
-        $_SESSION['message'] = 'Chủ đề đã được xóa thành công';
+        $userModel->DeleteUser($user_id);
+        $_SESSION['message'] = 'User đã được xóa thành công';
         $_SESSION['type'] = 'success';
-        header('location: ' . BASE_URL . '/admin/topics/index.php');
+        header('location: ' . BASE_URL . '/admin/user/');
     }
 }

@@ -60,16 +60,6 @@
 
   </div>
 
-
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- CKEditor 5 -->
-  <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-
-  <!-- Custome Scripts -->
-  <!-- <script src="../../assets/js/scripts.js"></script> -->
-
 </body>
 
 </html>

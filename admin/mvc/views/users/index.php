@@ -10,10 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
   <!-- Custom Styles -->
-  <!-- <link rel="stylesheet" href=<?php echo ROOT . DS . "public" . DS . "css" . DS . "style.css" ?>> -->
+  <link rel="stylesheet" href=<?php echo ROOT . DS . "public" . DS . "css" . DS . "style.css" ?>>
 
   <!-- Admin Styling -->
-  <!-- <link rel="stylesheet" href="../../public/css/admin.css"> -->
+  <link rel="stylesheet" href="../../public/css/admin.css">
 
   <title>Admin - Quản lí user</title>
 </head>
@@ -70,12 +70,6 @@
     <!-- // Admin Content -->
 
   </div>
-
-
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <script src="../../scripts.js"></script>
 
 </body>
 

@@ -18,30 +18,6 @@
 
   <!-- Page wrapper -->
   <div class="page-wrapper">
-    <!-- Posts Slider -->
-    <div class="posts-slider">
-      <h1 class="slider-title">Bài viết nổi bật</h1>
-      <i class="fa fa-chevron-right next"></i>
-      <i class="fa fa-chevron-left prev"></i>
-      <div class="posts-wrapper">
-        <?php foreach ($data['PopularPost'] as $key => $posts) : ?>
-          <div class="post">
-            <div class="inner-post">
-              <img src="<?php echo $posts['image']; ?>" alt="" style="height: 200px; width: 100%; border-top-left-radius: 5px; border-top-right-radius: 5px;">
-              <div class="post-info">
-                <h4><a href="post/init/<?php echo $posts['id']; ?>"><?php echo $posts['title']; ?></a></h3>
-                  <div>
-                    <i class="fa fa-user-o"></i> <?php echo $posts['author']; ?>
-                    &nbsp;
-                    <i class="fa fa-calendar"></i> <?php echo $posts['created_at']; ?>
-                  </div>
-              </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-    <!-- // Posts Slider -->
     <!-- content -->
     <div class="content clearfix">
       <div class="page-content">
@@ -176,7 +152,7 @@
                 <li class="page-item"><a class="page-link" href="<?php echo BASE_URL . "/Home/Page/" . $data['CurrentPost'] - 1 ?>"><?php echo $data['CurrentPost'] - 1 ?></a></li>
               <?php } ?>
 
-              <li class="page-item"><a class="page-link" href="<?php echo BASE_URL . "/Home/Page/" . $data['CurrentPost'] ?>"><?php echo $data['CurrentPost'] ?></a></li>
+              <li class="page-item"><a style="background-color: #0081cb; color: white" class="page-link" href="<?php echo BASE_URL . "/Home/Page/" . $data['CurrentPost'] ?>"><?php echo $data['CurrentPost'] ?></a></li>
 
               <?php if ($data['CurrentPost'] < $data['CountPosts'] - 1) { ?>
                 <li class="page-item"><a class="page-link" href="<?php echo BASE_URL . "/Home/Page/" . $data['CurrentPost'] + 1 ?>"><?php echo $data['CurrentPost'] + 1 ?></a></li>
@@ -221,12 +197,6 @@
   <!-- // page wrapper -->
 
   <?php include("footer.php"); ?>
-
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- Slick JS -->
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script src="public/js/scripts.js"></script>
 </body>
 
 </html>

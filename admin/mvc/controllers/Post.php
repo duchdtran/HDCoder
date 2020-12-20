@@ -49,38 +49,44 @@ class Post extends Controller
         ]);
     }
 
-    function Edit($topic_id)
+    function Edit($post_id)
     {
+        $postModel = $this->model("Posts");
         $topicModel = $this->model("Topics");
 
-        $topic = $topicModel->GetTopicByID($topic_id);
+        $post = $postModel->GetpostByID($post_id);
+        $post['body'] = html_entity_decode($post['body']);
 
-        if (isset($_POST['update-topic'])) {
-            $this->errors = $topicModel->validateTopic($_POST);
+        if (isset($_POST['update-post'])) {
+            $this->errors = $postModel->validatePost($_POST);
 
-
-            dd($this->errors);
             if (count($this->errors) === 0) {
                 $id = $_POST['id'];
-                unset($_POST['update-topic'], $_POST['id']);
-                $topicModel->UpdateTopicByID($id, $_POST);
-                $_SESSION['message'] = 'Chủ đề đã được sửa thành công';
-                $_SESSION['type'] = 'success';
-                header('location: ' . BASE_URL_ADMIN . '/topic/index');
-                exit();
+                unset($_POST['update-post'], $_POST['id']);
+
+                if ($postModel->UpdatePostByID($id, $_POST) == 1) {
+                    $_SESSION['message'] = 'Bài viết đã được sửa thành công';
+                    $_SESSION['type'] = 'success';
+                    header('location: ' . BASE_URL_ADMIN . '/post/index');
+                    exit();
+                } else {
+                    $_SESSION['message'] = 'Bài viết cập nhật không thành công';
+                    $_SESSION['type'] = 'error';
+                    header('location: ' . BASE_URL_ADMIN . '/post/index');
+                    exit();
+                }
             } else {
                 $this->id = $_POST['id'];
-                $this->name = $_POST['name'];
-                $this->description = $_POST['description'];
+                $this->title = $_POST['title'];
+                $this->body = $_POST['body'];
             }
         }
 
-        $this->view("posts/edit", ["errors" => $this->errors, "topic" => $topic]);
+        $this->view("posts/edit", ["errors" => $this->errors, "post" => $post, "topics" => $topicModel->getAllTopics()]);
     }
 
     function Delete($topic_id)
     {
-        dd($_POST);
         $topicModel = $this->model("Topics");
 
         $topicModel->DeleteTopic($topic_id);
