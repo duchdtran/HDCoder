@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
   <!-- Custom Styles -->
   <link rel="stylesheet" href=<?php echo ROOT . DS . "public" . DS . "css" . DS . "style.css" ?>>
 
@@ -49,11 +46,6 @@
                 <td><?php echo $key + 1; ?></td>
                 <td>
                   <a href="#"><?php echo $user['username'] ?></a>
-                </td>
-                <td>
-                  <a href="<?php echo BASE_URL_ADMIN . "/user/edit/" . $user['id']; ?>" class="edit">
-                    Sửa
-                  </a>
                 </td>
                 <td>
                   <a href="<?php echo BASE_URL_ADMIN . "/user/delete/" . $user['id']; ?>" class="delete">

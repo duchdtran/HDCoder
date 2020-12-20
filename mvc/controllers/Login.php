@@ -9,7 +9,7 @@ class Login extends Controller
 
     function loginUser($user)
     {
-        session_start(); 
+        session_start();
         $_SESSION['id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['admin'] = $user['admin'];
@@ -17,7 +17,7 @@ class Login extends Controller
         $_SESSION['type'] = 'success';
 
         if ($_SESSION['admin']) {
-            header('location: ' . BASE_URL_ADMIN .'/post');
+            header('location: ' . BASE_URL_ADMIN . '/post');
         } else {
             header('location: ' . BASE_URL . '/home');
         }
@@ -33,18 +33,21 @@ class Login extends Controller
             $userModel = $this->model("Users");
             $this->errors = $userModel->ValidateLogin($_POST);
 
-            unset($_POST['login-btn']);
+            if (count($this->errors) === 0) {
+                unset($_POST['login-btn']);
 
-            $user = $userModel->Login($_POST);
+                $user = $userModel->Login($_POST);
 
-            if (isset($user)) {
-                $this->loginUser($user);
-            } else {
-                $this->username = $_POST['username'];
-                $this->password = $_POST['password'];
+                if (isset($user)) {
+                    $this->loginUser($user);
+                } else {
+                    array_push($this->errors, "Thông tin đăng nhập không chính xác");
+                    $this->username = $_POST['username'];
+                    $this->password = $_POST['password'];
+                }
             }
         }
 
-        $this->view("login", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password]); 
+        $this->view("login", ["errors" => $this->errors, "username" => $this->username, "password" => $this->password]);
     }
 }

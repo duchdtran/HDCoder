@@ -758,8 +758,8 @@
             <i class="fa fa-chevron-down"></i>
           </a>
           <ul class="dropdown">
-            <?php if (!isset($_SESSION['admin'])) : ?>
-              <li><a href="<?php echo BASE_URL . '/admin.dashboard.php' ?>">Dashboard</a></li>
+            <?php if ($_SESSION['admin'] == 1) : ?>
+              <li><a href="<?php echo BASE_URL_ADMIN; ?>">Quản lí</a></li>
             <?php endif; ?>
             <li><a href="<?php echo BASE_URL . '/logout' ?>" class="logout">Đăng xuất</a></li>
           </ul>

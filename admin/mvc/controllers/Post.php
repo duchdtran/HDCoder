@@ -85,13 +85,13 @@ class Post extends Controller
         $this->view("posts/edit", ["errors" => $this->errors, "post" => $post, "topics" => $topicModel->getAllTopics()]);
     }
 
-    function Delete($topic_id)
+    function Delete($post_id)
     {
-        $topicModel = $this->model("Topics");
+        $postModel = $this->model("Posts");
 
-        $topicModel->DeleteTopic($topic_id);
-        $_SESSION['message'] = 'Chủ đề đã được xóa thành công';
+        $postModel->DeletePost($post_id);
+        $_SESSION['message'] = 'Bài viết đã được xóa thành công';
         $_SESSION['type'] = 'success';
-        header('location: ' . BASE_URL . '/admin/posts/index.php');
+        header('location: ' . BASE_URL . '/admin/post');
     }
 }
